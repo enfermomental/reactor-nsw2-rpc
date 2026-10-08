@@ -1,0 +1,48 @@
+{
+  "name": "reactor-nsw2-rpc",
+  "productName": "NSW2 Presence",
+  "version": "1.0.0",
+  "description": "Muestra lo que juegas en tu Nintendo Switch 2 como Rich Presence de Discord.",
+  "main": "src/main/main.js",
+  "type": "module",
+  "private": true,
+  "license": "AGPL-3.0-or-later",
+  "scripts": {
+    "start": "electron .",
+    "demo": "electron . --demo",
+    "make-icons": "node scripts/make-icons.js",
+    "dist": "electron-builder --win portable"
+  },
+  "build": {
+    "appId": "reactor.nsw2.rpc",
+    "productName": "NSW2 Presence",
+    "files": [
+      "src/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "win": {
+      "icon": "assets/icon.png",
+      "target": "portable"
+    },
+    "extraResources": [
+      {
+        "from": "assets/discord",
+        "to": "discord"
+      }
+    ],
+    "portable": {
+      "artifactName": "NSW2-Presence-${version}.exe"
+    }
+  },
+  "dependencies": {
+    "@fontsource-variable/nunito": "5.2.6",
+    "@xhayper/discord-rpc": "1.5.1",
+    "nxapi": "1.6.1-next.257"
+  },
+  "devDependencies": {
+    "electron": "^44.7.0",
+    "electron-builder": "^26.15.3"
+  },
+  "author": "Enfermo Mental"
+}
